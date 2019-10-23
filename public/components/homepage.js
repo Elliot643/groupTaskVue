@@ -14,8 +14,7 @@ let homepage=Vue.component("homepage",{
                     </li>
                 </ul>
             </div>
-
-
+            
         </div>
     `,
     data(){
@@ -36,7 +35,6 @@ let homepage=Vue.component("homepage",{
         .get('http://localhost:8080/user')
         .then(response => {
             responseData = response.data.users;
-            console.log(responseData);
             responseData.map((user) => {
                 this.users.push(...this.users, user);
             })

@@ -5,6 +5,9 @@ let basepage=Vue.component("basepage",{
         <div class="homepage">
             <homepage/>
         </div>
+        <div class="loginpage">
+            <loginpage/>
+        </div>
         <div class="userpage">
             <userpage/>
         </div>
