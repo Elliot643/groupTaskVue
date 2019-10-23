@@ -26,6 +26,7 @@ let basepage=Vue.component("basepage",{
             else{
                 this.hidden=true;
             }
+            window.scrollTo(0,0);
         },
         createUserpage(user){
             this.currentUser=user;

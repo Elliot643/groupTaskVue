@@ -1,9 +1,9 @@
 let userPagePicture=Vue.component("userpage-picture",{
     props:{
-        //imageSrc: "",
+        pictureId: Number,
     },
     template:`
-        <div class="user-card" @click="">
+        <div class="user-page-picture">
             <div class="picture">
                 <img v-bind:src="imageSrc">
             </div>
@@ -16,8 +16,22 @@ let userPagePicture=Vue.component("userpage-picture",{
                     </li>
                 </ul>
                 <p>
-                    <label for="name">Comment:</label>
-                    <input id="name" v-model="name"></input> 
+                    <form class="comment-form" @submit.prevent="addComment">
+                        <p>
+                            <label for="comment">Comment:</label>
+                            <input id="comment" v-model="comment"></input>
+                        </p>
+                        <p>
+                            <label for="thumbsUp">Thumbs Up</label>
+                            <input type="radio" id="thumbsUp" value="true" v-model="thumbsUp"></input>
+                            <label for="thumbsDown">Thumbs Down</label>
+                            <input type="radio" id="thumbsDown" value="false" v-model="thumbsUp"></input>
+                        </p>
+                        <p>
+                            <input type="submit" value="Submit"></input>
+                        </p>
+                        
+                    </form>  
                 </p>
             </div>
         </div>
@@ -25,7 +39,9 @@ let userPagePicture=Vue.component("userpage-picture",{
     data(){
         return{
             imageSrc: "../assets/cat.jpg",
-            name: "",
+            comment: "",
+            thumbsUp: true,
+            commenter: "Commenter",
             comments:[
                 {
                     pictureId: 1,
@@ -42,11 +58,18 @@ let userPagePicture=Vue.component("userpage-picture",{
             ],
         }
     },
-    mount:{
-
-    },
     methods:{
-        
+        addComment(){
+            this.comments.push(
+                {
+                    pictureId: this.pictureId,
+                    comment: this.comment,
+                    thumbsUp: this.thumbsUp,
+                    commenter: this.commenter
+                }
+            );
+            alert(this.pictureId+this.comment+this.thumbsUp+this.commenter);
+        }
     },
     computed:{
 
