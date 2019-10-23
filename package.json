@@ -1,0 +1,24 @@
+{
+  "name": "grouptaskvue",
+  "version": "1.0.0",
+  "description": "hinder",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elliot643/groupTaskVue.git"
+  },
+  "author": "Elliot Gustafsson, Lars Mikael Gustavsson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Elliot643/groupTaskVue/issues"
+  },
+  "homepage": "https://github.com/Elliot643/groupTaskVue#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^1.19.4"
+  }
+}
