@@ -10,7 +10,7 @@ let homepage=Vue.component("homepage",{
                 <h1>User Cards Here</h1>
                 <ul>
                     <li v-for="user in users">
-                        <user-card :user="user"></user-card>
+                        <user-card :user="user" @clicked-usercard="createUserPage"></user-card>
                     </li>
                 </ul>
             </div>
@@ -21,11 +21,13 @@ let homepage=Vue.component("homepage",{
     data(){
         
         return{
-            users: []
+            users: [],
         }
     },
     methods:{
-        
+        createUserPage(user){
+            this.$emit("create-userpage",user);
+        }
     },
     computed:{
 

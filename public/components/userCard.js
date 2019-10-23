@@ -3,7 +3,7 @@ let userCard=Vue.component("user-card",{
         user: Object,
     },
     template:`
-        <div class="user-card" @click="">
+        <div class="user-card" @click="clickedCard">
             <div class="user-image">
                 <img v-bind:src="user.userImage">
             </div>
@@ -16,12 +16,12 @@ let userCard=Vue.component("user-card",{
         return{
             //username:"Sven",
             //userImage:"../assets/image.jpg",
-            username: user.username,
-            userImage: user.userImage
         }
     },
     methods:{
-
+        clickedCard(){
+            this.$emit("clicked-usercard",this.user);
+        }
     },
     computed:{
 

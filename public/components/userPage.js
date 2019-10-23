@@ -1,9 +1,10 @@
 let userpage=Vue.component("userpage",{
     props:{
-        //user: Object,
+        user: Object,
     },
     template:`
         <div class="userpage">
+            <button v-on:click="returnToHome">Return</button>
             <h1>Userpage</h1>
             <div class="userpage-profile-picture">
                 <img v-bind:src="user.userImage">
@@ -21,14 +22,16 @@ let userpage=Vue.component("userpage",{
     `,
     data(){
         return{
-            user:{
+            /*user:{
                 username: "Susan",
                 userImage: "../assets/image.jpg"
-            }
+            }*/
         }
     },
     methods:{
-
+        returnToHome(){
+            this.$emit("return-to-homepage");
+        }
     },
     computed:{
 
