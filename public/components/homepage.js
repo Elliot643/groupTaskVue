@@ -14,8 +14,7 @@ let homepage=Vue.component("homepage",{
                     </li>
                 </ul>
             </div>
-
-
+            
         </div>
     `,
     data(){
