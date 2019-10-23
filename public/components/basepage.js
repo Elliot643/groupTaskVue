@@ -5,6 +5,9 @@ let basepage=Vue.component("basepage",{
         <div class="homepage">
             <homepage @create-userpage="createUserpage" v-show="!hidden"/>
         </div>
+        <div class="loginpage">
+            <loginpage/>
+        </div>
         <div class="userpage">
             <userpage @return-to-homepage="showHomepage" :user="currentUser" v-show="hidden"/>
         </div>
