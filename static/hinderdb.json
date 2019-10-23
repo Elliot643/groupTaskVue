@@ -1,0 +1,73 @@
+[
+    {
+        "user": [
+            {
+                "id": 1,
+                "userImage": "/assets/image.jpg",
+                "username": "craig",
+                "password": "abcde",
+                "created_At": "2017-10-01",
+                "pictures": [
+                    {
+                        "id": 1
+                    },
+                    {
+                        "id": 2
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "username": "ben",
+                "password": "fghij",
+                "created_At": "2017-11-01",
+                "pictures": [
+                    {
+                        "id": 1,
+                        "link": ""
+                    },
+                    {
+                        "id": 2,
+                        "link": "./assets/image2.png"
+                    }
+                ]
+            }
+        ],
+
+        "picture": [
+            {
+                "id": 1,
+                "link": "/assets/image1.png",
+                "description": "Picture of me climbing K2",
+                "verdictID": 1,
+                "userID": 1
+            },
+            {
+                "id": 2,
+                "link": "/assets/image2.png",
+                "description": "Picture of me falling from K2",
+                "verdictID": 1,
+                "userID": 1
+            }
+        ],
+
+        "verdict": [
+            {
+                "id": 1,
+                "like": true,
+                "dislike": false,
+                "description": "Really like this picture",
+                "userID": 1,
+                "pictureID": 1
+            },
+            {
+                "id": 2,
+                "like": false,
+                "dislike": true,
+                "description": "You fell down",
+                "userID": 2,
+                "pictureID": 2
+            }
+        ]
+    }
+]
