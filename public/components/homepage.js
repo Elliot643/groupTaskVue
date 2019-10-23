@@ -1,15 +1,18 @@
-
 let homepage=Vue.component("homepage",{
     template:`
         <div class="homepage">
             
             <div class="welcomeThings">
                 <h1>Welcome To Hinder Homepage</h1>
-                <img v-for="user in users" :src="user.userImage">
+                <img v-bind:src="'../assets/hinder.jpg'">
             </div>
-            <div class="userCards">
+            <div class="userCards"> 
                 <h1>User Cards Here</h1>
-                <user-card />
+                <ul>
+                    <li v-for="user in users">
+                        <user-card :user="user"></user-card>
+                    </li>
+                </ul>
             </div>
 
 

@@ -1,4 +1,4 @@
-let userCard=Vue.component("userpage-picture",{
+let userPagePicture=Vue.component("userpage-picture",{
     props:{
         //imageSrc: "",
     },
@@ -25,6 +25,7 @@ let userCard=Vue.component("userpage-picture",{
     data(){
         return{
             imageSrc: "../assets/cat.jpg",
+            name: "",
             comments:[
                 {
                     pictureId: 1,

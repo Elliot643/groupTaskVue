@@ -1,22 +1,23 @@
 let userCard=Vue.component("user-card",{
     props:{
         user: Object,
-        username: String,
-        imageSrc: String 
     },
     template:`
         <div class="user-card" @click="">
             <div class="user-image">
-                <img v-bind:src="imageSrc">
+                <img v-bind:src="user.userImage">
             </div>
             <div>
-                <h1>{{ username }}</h1>
+                <h1>{{ user.username }}</h1>
             </div>
         </div>
     `,
     data(){
         return{
-            
+            //username:"Sven",
+            //userImage:"../assets/image.jpg",
+            username: user.username,
+            userImage: user.userImage
         }
     },
     methods:{

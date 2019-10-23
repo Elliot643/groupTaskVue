@@ -4,6 +4,7 @@ let userpage=Vue.component("userpage",{
     },
     template:`
         <div class="userpage">
+            <h1>Userpage</h1>
             <div class="userpage-profile-picture">
                 <img v-bind:src="user.userImage">
             </div>
