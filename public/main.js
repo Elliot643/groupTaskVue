@@ -5,8 +5,5 @@ var app = new Vue({
     },
     methods:{
         
-    },
-    components:{
-        "user-card": userCard,
     }
 });

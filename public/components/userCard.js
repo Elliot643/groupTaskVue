@@ -4,7 +4,9 @@ let userCard=Vue.component("user-card",{
             <div class="user-image">
                 <img v-bind:src="userImage">
             </div>
-            <h3>{{ username }}</h3>
+            <div>
+                <h1>{{ userName }}</h1>
+            </div>
         </div>
     `,
     data(){
