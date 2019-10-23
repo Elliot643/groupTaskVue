@@ -12,7 +12,6 @@ let homepage=Vue.component("homepage",{
                 <user-card/>
             </div>
 
-            <script src="./homepage.js"></script>
 
         </div>
     `,
