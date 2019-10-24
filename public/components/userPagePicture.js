@@ -7,7 +7,7 @@ let userPagePicture=Vue.component("userpage-picture",{
         <div class="user-page-picture">
             <div class="picture">
                 <img v-bind:src="picture.picture">
-                <h3>Caption here: {{ picture.caption }}</h3>
+                <h3>Caption: {{ picture.caption }}</h3>
             </div>
             <div>
                 <ul>
@@ -40,7 +40,6 @@ let userPagePicture=Vue.component("userpage-picture",{
     `,
     data(){
         return{
-            verdict: {},
             comment: "",
             thumbsUp: false,
             commenter: "------Get name from session later------",
@@ -59,9 +58,12 @@ let userPagePicture=Vue.component("userpage-picture",{
             };
             //this.comments.push(localComment);
             axios.post('/postVerdict', localComment).then(() => {
-                axios.get("/getAllVerdicts").then((result)=>{
+                axios.post("/getVerdictWithPictureId",{
+                    pictureId: this.picture.pictureId
+                }).then((result)=>{
                     this.comments = result.data;
-                });
+                }
+            );
             }).catch(function (error) {
                 console.log(error);
             });
@@ -72,8 +74,9 @@ let userPagePicture=Vue.component("userpage-picture",{
     },
     mounted () {
 
-        axios.get("/getAllVerdicts")
-            .then((result)=>{
+        axios.post("/getVerdictWithPictureId",{
+                pictureId: this.picture.pictureId
+            }).then((result)=>{
                 this.comments = result.data;
             }
         );

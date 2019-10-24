@@ -4,8 +4,8 @@ let Verdict = require("./public/models/verdict");
 let User = require("./public/models/user");
 let Picture = require("./public/models/picture");
 
-router.route("/getAllVerdicts").get(function(req, res){
-    Verdict.find({},function(err,listOfVerdicts){
+router.route("/getVerdictWithPictureId").post(function(req, res){
+    Verdict.find({pictureId: req.body.pictureId},function(err,listOfVerdicts){
         res.json(listOfVerdicts);
     })
 });

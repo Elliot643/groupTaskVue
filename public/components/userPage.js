@@ -5,15 +5,13 @@ let userpage=Vue.component("userpage",{
     template:`
         <div class="userpage">
             <button v-on:click="returnToHome">Return</button>
-            <h1>Userpage</h1>
+            <h1>{{ user.username }}'s page</h1>
             <div class="userpage-profile-picture">
                 <img v-bind:src="user.profilePic">
             </div>
-            <div class="userpage-username">
-                <h2>{{ user.username }}</h2>
-            </div>
+            
             <div class="userpage-pictures">
-                <h1>User page pictures here</h1>
+                <h1 v-if="!pictures.length">This user does not have any pictures</h1>
                 <ul>
                     <p v-for="picture in pictures">
                         <userpage-picture :picture="picture"/>
