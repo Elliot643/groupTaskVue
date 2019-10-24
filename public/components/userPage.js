@@ -14,7 +14,7 @@ let userpage=Vue.component("userpage",{
             </div>
             <div class="userpage-pictures">
                 <h1>User page pictures here</h1>
-                <userpage-picture></userpage-picture>
+                <userpage-picture :pictureId="1"></userpage-picture>
             </div>
             
 

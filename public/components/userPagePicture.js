@@ -1,3 +1,4 @@
+
 let userPagePicture=Vue.component("userpage-picture",{
     props:{
         pictureId: Number,
@@ -38,41 +39,46 @@ let userPagePicture=Vue.component("userpage-picture",{
     `,
     data(){
         return{
+            verdict: {},
             imageSrc: "../assets/cat.jpg",
             comment: "",
             thumbsUp: true,
-            commenter: "Commenter",
-            comments:[
-                {
-                    pictureId: 1,
-                    comment: "doesnt care",
-                    thumbsUp: false,
-                    commenter: "Karen"
-                },
-                {
-                    pictureId: 1,
-                    comment: "nice",
-                    thumbsUp: true,
-                    commenter: "Joe"
-                }
-            ],
+            commenter: "TempCommenter",
+            comments: [],
         }
     },
     methods:{
         addComment(){
-            this.comments.push(
-                {
-                    pictureId: this.pictureId,
-                    comment: this.comment,
-                    thumbsUp: this.thumbsUp,
-                    commenter: this.commenter
-                }
-            );
-            alert(this.pictureId+this.comment+this.thumbsUp+this.commenter);
+            console.log("comment submitted");
+            axios.post('/postVerdict', {
+                comment: this.comment,
+                commenter: this.commenter,
+                thumbsUp: this.thumbsUp,
+                pictureId: this.pictureId
+            }).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+            this.comments = this.getComments();
+        },
+        getComments(){
+            let functionReturn=[];
+            axios.get("http://localhost:8080/getAllVerdicts")
+            .then((result)=>{
+                functionReturn=result.data[0];
+                return functionReturn;
+            }).then((thing) => {
+                console.log(thing);
+                return thing;
+            })
+            
+            ;
+            
         }
     },
     computed:{
 
-    },
+    }
     
 });

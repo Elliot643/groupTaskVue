@@ -14,8 +14,9 @@ let userCard=Vue.component("user-card",{
     `,
     data(){
         return{
-            username: user.username,
-            userImage: user.userImage
+            //username: user.username,
+            //userImage: user.userImage,
+
         }
     },
     methods:{
