@@ -7,10 +7,11 @@ let userPagePicture=Vue.component("userpage-picture",{
         <div class="user-page-picture">
             <div class="picture">
                 <img v-bind:src="picture.picture">
-                <h3>Caption: {{ picture.caption }}</h3>
+                <h3 v-if="picture.caption">Caption: {{ picture.caption }}</h3>
             </div>
             <div>
                 <ul>
+                    <li v-if="!comments.length">No comments yet</li>
                     <li v-for="comment in comments">
                         <p>{{ comment.commenter }} says: {{ comment.comment }}</p>
                         <p><img v-bind:src="'../assets/thumbsup.jpg'" v-if="comment.thumbsUp"></p>
@@ -30,7 +31,7 @@ let userPagePicture=Vue.component("userpage-picture",{
                             <input type="radio" id="thumbsDown" value="false" v-model="thumbsUp"></input>
                         </p>
                         <p>
-                            <input type="submit" value="Submit"></input>
+                            <input type="submit" value="Comment"></input>
                         </p>
                         
                     </form>  

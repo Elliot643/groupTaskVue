@@ -3,7 +3,7 @@ const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 var PictureSchema = new mongoose.Schema({
   picture: { type: String },
-  userId: { type: String},
+  userId: { type: Number},
   caption: String,
   pictureId: {type: Number, unique :true},
 }, { timestamps: true }); // timestamps is for automatically update of changes (createAt, updateAt)

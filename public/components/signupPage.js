@@ -49,7 +49,8 @@ let signupPage=Vue.component("signupPage",{
     data(){
         return{
             username: "",
-            password: ""
+            password: "",
+            errors: [],
         }
         
     },
@@ -68,14 +69,6 @@ let signupPage=Vue.component("signupPage",{
                 axios.post("/postUser",{
                     username: this.username,
                     password: this.password,
-                })
-                .then(response => {
-                    if (e.target.username.value === response.data.username) {
-                        if (e.target.password.value === response.data.password) {
-                            this.loggedIn = true;
-                            localStorage.setItem(`username: ${response.data.username}`);
-                        }
-                    }
                 });
             }
 

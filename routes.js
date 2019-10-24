@@ -73,7 +73,6 @@ router.route("/getUserWithId").post(function(req,res){
 });
 
 router.route("/getPicturesWithUserId").post(function(req,res){
-    console.log("/getPicturesWithUserId called");
     Picture.find({userId:req.body.userId},function(err,pictures){
         res.json(pictures);
     })
@@ -83,5 +82,14 @@ router.route("/getUsers").get(function(req,res){
     User.find({},function(err,listOfUsers){
         res.json(listOfUsers);
     })
+});
+
+router.route("/postPicture").post(function(req,res){
+    let picture = new Picture();
+    picture.picture=req.body.picture;
+    picture.userId=req.body.userId;
+    picture.caption=req.body.caption;
+    picture.save();
+    res.redirect("/"); 
 });
 module.exports = router;

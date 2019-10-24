@@ -9,6 +9,10 @@ let userpage=Vue.component("userpage",{
             <div class="userpage-profile-picture">
                 <img v-bind:src="user.profilePic">
             </div>
+
+            <div class="userpage-upload-picture">
+                <pictureUpload @picture-uploaded-update="postAndUpdatePictures"></pictureUpload>
+            </div>
             
             <div class="userpage-pictures">
                 <h1 v-if="!pictures.length">This user does not have any pictures</h1>
@@ -31,6 +35,16 @@ let userpage=Vue.component("userpage",{
     methods:{
         returnToHome(){
             this.$emit("return-to-homepage");
+        },
+        postAndUpdatePictures(picture){
+            console.log("updating pictures on userpage");
+            axios.post("/postPicture", picture).then(()=> {
+                axios.post("/getPicturesWithUserId",{
+                    userId: this.user.userId
+                }).then((res)=>{
+                    this.pictures=res.data;
+                });
+            });
         }
     },
     computed:{
