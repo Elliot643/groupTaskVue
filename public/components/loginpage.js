@@ -70,7 +70,7 @@ let loginpage=Vue.component("loginpage",{
 
             if (!this.errors.length) {
                 axios
-                .get('http://localhost:8080/user')
+                .get('/login')
                 .then(response => {
                     if (e.target.username.value === response.data.username) {
                         if (e.target.password.value === response.data.password) {
