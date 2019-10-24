@@ -6,7 +6,7 @@ var UserSchema = new mongoose.Schema({
   username: { type: String, required: [true, "can't be blank"], unique: true },
   userId: {type: Number, unique :true},
   profilePic: String,
-  pictureIds: { type: Array, ref: "pictures" },
+  pictureIds: { type: Array, ref: "picture" },
   hash: String,
   salt: String
 }, { timestamps: true }); // timestamps is for automatically update of changes (createAt, updateAt)

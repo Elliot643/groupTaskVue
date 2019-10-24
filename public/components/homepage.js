@@ -9,9 +9,9 @@ let homepage=Vue.component("homepage",{
             <div class="userCards"> 
                 <h1>User Cards Here</h1>
                 <ul>
-                    <li v-for="user in users">
+                    <p v-for="user in users">
                         <user-card :user="user" @clicked-usercard="createUserPage"></user-card>
-                    </li>
+                    </p>
                 </ul>
             </div>
             
@@ -34,9 +34,9 @@ let homepage=Vue.component("homepage",{
 
     mounted() {
         axios
-        .get('http://localhost:8080/user')
-        .then(response => {
-            responseData = response.data.users;
+        .get("/getUsers")
+        .then((response) => {
+            responseData = response.data;
             responseData.map((user) => {
                 this.users.push(user);
             })

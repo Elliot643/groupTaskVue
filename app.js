@@ -18,10 +18,6 @@ app.use(function(req, res, next) {
 let mongoose = new Mongoose();
 mongoose.connect();
 
-app.get("/user", (req, res) => {
-	res.sendFile(path.join(__dirname+"/static/hinderdb.json"))
-});
-
 app.use("/",routes);
 
 

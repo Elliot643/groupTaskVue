@@ -5,7 +5,7 @@ let userCard=Vue.component("user-card",{
     template:`
         <div class="user-card" @click="clickedCard">
             <div class="user-image">
-                <img v-bind:src="user.userImage">
+                <img v-bind:src="user.profilePic">
             </div>
             <div>
                 <h1>{{ user.username }}</h1>
@@ -15,7 +15,7 @@ let userCard=Vue.component("user-card",{
     data(){
         return{
             //username: user.username,
-            //userImage: user.userImage,
+            userImage: "../assets/defaultpicture.jpg",
 
         }
     },

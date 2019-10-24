@@ -1,12 +1,13 @@
 
 let userPagePicture=Vue.component("userpage-picture",{
     props:{
-        pictureId: Number,
+        picture: Object,
     },
     template:`
         <div class="user-page-picture">
             <div class="picture">
-                <img v-bind:src="imageSrc">
+                <img v-bind:src="picture.picture">
+                <h3>Caption here: {{ picture.caption }}</h3>
             </div>
             <div>
                 <ul>
@@ -40,45 +41,44 @@ let userPagePicture=Vue.component("userpage-picture",{
     data(){
         return{
             verdict: {},
-            imageSrc: "../assets/cat.jpg",
             comment: "",
-            thumbsUp: true,
-            commenter: "TempCommenter",
+            thumbsUp: false,
+            commenter: "------Get name from session later------",
             comments: [],
         }
     },
+    
     methods:{
         addComment(){
             console.log("comment submitted");
-            axios.post('/postVerdict', {
+            let localComment = {
                 comment: this.comment,
                 commenter: this.commenter,
                 thumbsUp: this.thumbsUp,
-                pictureId: this.pictureId
-            }).then(function (response) {
-                console.log(response);
+                pictureId: this.picture.pictureId
+            };
+            //this.comments.push(localComment);
+            axios.post('/postVerdict', localComment).then(() => {
+                axios.get("/getAllVerdicts").then((result)=>{
+                    this.comments = result.data;
+                });
             }).catch(function (error) {
                 console.log(error);
             });
-            this.comments = this.getComments();
-        },
-        getComments(){
-            let functionReturn=[];
-            axios.get("http://localhost:8080/getAllVerdicts")
-            .then((result)=>{
-                functionReturn=result.data[0];
-                return functionReturn;
-            }).then((thing) => {
-                console.log(thing);
-                return thing;
-            })
-            
-            ;
+
+            this.comment="";
             
         }
     },
-    computed:{
+    mounted () {
 
+        axios.get("/getAllVerdicts")
+            .then((result)=>{
+                this.comments = result.data;
+            }
+        );
+        
+    
     }
     
 });

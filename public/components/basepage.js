@@ -9,7 +9,7 @@ let basepage=Vue.component("basepage",{
             <loginpage/>
         </div>
         <div class="userpage">
-            <userpage @return-to-homepage="showHomepage" :user="currentUser" v-show="hidden"/>
+            <userpage @return-to-homepage="showHomepage" :user="currentUser" v-if="hidden"/>
         </div>
 
     </div>

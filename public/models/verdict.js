@@ -5,7 +5,7 @@ var VerdictSchema = new mongoose.Schema({
   comment: { type: String },
   commenter: { type: String },
   thumbsUp: Boolean,
-  pictureId: {type: String, ref: "picture"},
+  pictureId: {type: Number, ref: "picture"},
   verdictId: {type: Number, unique :true}
 }, { timestamps: true }); // timestamps is for automatically update of changes (createAt, updateAt)
 
