@@ -8,9 +8,9 @@ let loginpage=Vue.component("loginpage",{
 
             <form
                 id="app"
-                @submit="checkForm"
+                @submit.prevent="checkForm"
             >
-                <p>
+                <p v-if="errors.length">
                     <b>Please correct the following error(s):</b>
                     <ul>
                     <li v-for="error in errors">{{ error }}</li>
@@ -50,16 +50,41 @@ let loginpage=Vue.component("loginpage",{
     data(){
         
         return{
-            
+            username: "",
+            password: "",
+            errors: [],
+            loggedIn: false
         }
     },
     methods:{
-        checkForm: (e) => {
-            
+        checkForm: function(e) {
+            this.errors = [];
+            if (!e.target.username.value) {
+                this.errors.push("Username required");
+            }
+
+            if (!e.target.password.value) {
+                this.errors.push("Password required");
+            }
+
+            if (!this.errors.length) {
+                axios
+                .get('http://localhost:8080/user')
+                .then(response => {
+                    if (e.target.username.value === response.data.username) {
+                        if (e.target.password.value === response.data.password) {
+                            this.loggedIn = true;
+                            localStorage.setItem(`username: ${response.data.username}`);
+                        }
+                    }
+                });
+            }
+
+            return true;
         }
     },
     computed:{
-
+        
     },
     
 });

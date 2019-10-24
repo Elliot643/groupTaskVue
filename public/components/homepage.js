@@ -38,7 +38,7 @@ let homepage=Vue.component("homepage",{
         .then(response => {
             responseData = response.data.users;
             responseData.map((user) => {
-                this.users.push(...this.users, user);
+                this.users.push(user);
             })
         })
     }
