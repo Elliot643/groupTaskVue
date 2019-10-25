@@ -37,6 +37,22 @@ let signupPage=Vue.component("signupPage",{
                 </p>
 
                 <p>
+                    <label for="profilePic">Link to profile Picture</label>
+                    <input
+                    id="profilePic"
+                    v-model="profilePic"
+                    type="profilePic"
+                    name="profilePic"
+                    >
+                </p>
+
+                <div v-if="profilepic.length">
+                    <h3>Choosen picture</h3>
+                    <img v-bind:src="profilePic" style="width: 100px">  
+                </div>
+                
+
+                <p>
                     <input
                     type="submit"
                     value="Submit"
@@ -51,6 +67,7 @@ let signupPage=Vue.component("signupPage",{
             username: "",
             password: "",
             errors: [],
+            profilePic: "",
         }
         
     },
@@ -64,11 +81,15 @@ let signupPage=Vue.component("signupPage",{
             if (!e.target.password.value) {
                 this.errors.push("Password required");
             }
+            if (!e.target.profilePic.value) {
+                this.errors.push("Profile picture required");
+            }
 
             if (!this.errors.length) {
                 axios.post("/postUser",{
                     username: this.username,
                     password: this.password,
+                    profilePic: this.profilePic,
                 });
             }
 

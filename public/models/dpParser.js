@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 class Mongoose {
  
   constructor() {
-    this.uri = "mongodb://localhost:27017/hinder";
+    this.uri = "mongodb://localhost:27017/hinder"
+    //this.uri = "mongodb+srv://user1337:passwordhinder@hinder-h823s.mongodb.net/test?retryWrites=true&w=majority";
   }
 
   connect(uri) {

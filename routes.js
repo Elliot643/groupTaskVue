@@ -22,7 +22,7 @@ router.route("/postUser").post(function(req,res){
     let user = new User();
     user.username=req.body.username;
     user.setPassword(req.body.password);
-    user.profilePic="../assets/defaultpicture.jpg"
+    user.profilePic=req.body.profilePic;
     
     user.save((err) => {
         if (err) {
