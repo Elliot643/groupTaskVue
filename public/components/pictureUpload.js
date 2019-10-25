@@ -37,7 +37,7 @@ let pictureUpload=Vue.component("pictureUpload",{
                 </p>
                 <div v-if="picture.length">
                     <p>
-                        <img v-bind:src="picture">
+                        <img v-bind:src="picture" style="width: 300px;height:300px">
                     </p>
                     <p v-if="caption.length">
                         Caption: {{ caption }}

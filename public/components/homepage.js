@@ -6,6 +6,7 @@ let homepage=Vue.component("homepage",{
                 <button align="right" v-on:click="logOut">Logout</button>
                 <h1>Welcome To Hinder Homepage {{ username }}</h1>
                 <img v-bind:src="'../assets/hinder.jpg'">
+                <h3>Be a douche</h3>
             </div>
             <div class="userCards"> 
                 <h1>User Cards Here</h1>
