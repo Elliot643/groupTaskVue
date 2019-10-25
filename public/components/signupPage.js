@@ -23,6 +23,7 @@ let signuppage=Vue.component("signuppage",{
                     v-model="username"
                     type="text"
                     name="username"
+                    maxlength="30"
                     >
                 </p>
 
@@ -35,6 +36,22 @@ let signuppage=Vue.component("signuppage",{
                     name="password"
                     >
                 </p>
+
+                <p>
+                    <label for="profilePic">Link to profile Picture</label>
+                    <input
+                    id="profilePic"
+                    v-model="profilePic"
+                    type="profilePic"
+                    name="profilePic"
+                    >
+                </p>
+
+                <div v-if="profilepic.length">
+                    <h3>Choosen picture</h3>
+                    <img v-bind:src="profilePic" style="width: 100px">  
+                </div>
+                
 
                 <p>
                     <input
@@ -50,7 +67,8 @@ let signuppage=Vue.component("signuppage",{
         return{
             username: "",
             password: "",
-            errors: []
+            errors: [],
+            profilePic: "",
         }
         
     },
@@ -64,19 +82,15 @@ let signuppage=Vue.component("signuppage",{
             if (!e.target.password.value) {
                 this.errors.push("Password required");
             }
+            if (!e.target.profilePic.value) {
+                this.errors.push("Profile picture required");
+            }
 
             if (!this.errors.length) {
                 axios.post("/postUser",{
                     username: this.username,
                     password: this.password,
-                })
-                .then(response => {
-                    if (e.target.username.value === response.data.username) {
-                        if (e.target.password.value === response.data.password) {
-                            this.loggedIn = true;
-                            localStorage.setItem(`username: ${response.data.username}`);
-                        }
-                    }
+                    profilePic: this.profilePic,
                 });
             }
 

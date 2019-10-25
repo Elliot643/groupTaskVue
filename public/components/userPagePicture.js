@@ -4,24 +4,33 @@ let userPagePicture=Vue.component("userpage-picture",{
         picture: Object,
     },
     template:`
-        <div class="user-page-picture">
-            <div class="picture">
-                <img v-bind:src="picture.picture">
-                <h3>Caption: {{ picture.caption }}</h3>
+        <div class="user-page-picture" style="border-style: groove; width:300px;">
+            <div class="picture" style="width:300px;">
+                <img v-bind:src="picture.picture" style="width:100%;">
+                <h3 v-if="picture.caption" style="text-align: center;">{{ picture.caption }}</h3>
             </div>
-            <div>
+            <div style="width:300px; ">
                 <ul>
-                    <li v-for="comment in comments">
-                        <p>{{ comment.commenter }} says: {{ comment.comment }}</p>
-                        <p><img v-bind:src="'../assets/thumbsup.jpg'" v-if="comment.thumbsUp"></p>
-                        <p><img v-bind:src="'../assets/thumbsdown.jpg'" v-if="!comment.thumbsUp"></p>  
-                    </li>
+                    <h4 v-if="!comments.length" style="text-align: center;">No comments yet</h4>
+                    <div v-for="comment in comments" style="border-style: groove; margin-left: -35px; margin-right: 5px; height: auto">
+                        
+                        <b>{{ comment.commenter }}:</b>
+                        <img v-bind:src="'../assets/thumbsup.jpg'" v-if="comment.thumbsUp" align="right" style="width:20px;">
+                        <img v-bind:src="'../assets/thumbsdown.jpg'" v-if="!comment.thumbsUp" align="right" style="width:20px;">
+                        <br>
+                        <p style="word-break: break-all; white-space: normal;">
+                            {{ comment.comment }}
+                        </p>
+                        
+                        
+                          
+                    </div>
                 </ul>
-                <p>
+                <div>
                     <form class="comment-form" @submit.prevent="addComment">
                         <p>
-                            <label for="comment">Comment:</label>
-                            <input id="comment" v-model="comment"></input>
+                            <label for="comment">Comment:</label><br>
+                            <input id="comment" v-model="comment" ></input>
                         </p>
                         <p>
                             <label for="thumbsUp">Thumbs Up</label>
@@ -30,11 +39,11 @@ let userPagePicture=Vue.component("userpage-picture",{
                             <input type="radio" id="thumbsDown" value="false" v-model="thumbsUp"></input>
                         </p>
                         <p>
-                            <input type="submit" value="Submit"></input>
+                            <input type="submit" value="Comment"></input>
                         </p>
                         
                     </form>  
-                </p>
+                </div>
             </div>
         </div>
     `,
@@ -42,7 +51,7 @@ let userPagePicture=Vue.component("userpage-picture",{
         return{
             comment: "",
             thumbsUp: false,
-            commenter: "------Get name from session later------",
+            commenter: "Commenter",
             comments: [],
         }
     },
