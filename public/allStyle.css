@@ -43,6 +43,10 @@ body {
     color: #000;
 }
 
+.basepage .userpage .userpage-picture .comment-form {
+    color: #000;
+}
+
 .homepage {
     margin-bottom: 5%;
 }
