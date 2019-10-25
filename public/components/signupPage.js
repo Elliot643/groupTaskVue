@@ -1,9 +1,9 @@
-let signupPage=Vue.component("signupPage",{
+let signuppage=Vue.component("signuppage",{
     props:{
 
     },
     template:`
-        <div class="signupPage">
+        <div class="signuppage">
             <h1>Signup Page</h1>
 
             <form
@@ -49,7 +49,8 @@ let signupPage=Vue.component("signupPage",{
     data(){
         return{
             username: "",
-            password: ""
+            password: "",
+            errors: []
         }
         
     },

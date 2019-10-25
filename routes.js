@@ -37,19 +37,16 @@ router.route("/login").post(function(req,res){
    let password = req.body.password
    User.findOne({username: username}, function(err , user){
        if(err){
-           console.log('user does not exist')
+           console.log('User does not exist')
        }
        else{
            if(!user.validPassword(password)){
                console.log("Wrong password")
            }else{
-               req.session.user = username
-               req.session.loggedin = true
-               res.send("logged in by " + username )
+               res.send(user)
            }
        }
-    })
-    res.redirect("/");
+    });
 });
 
 router.route("/addProfilePic").post(function(req,res){
