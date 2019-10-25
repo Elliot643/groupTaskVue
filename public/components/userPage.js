@@ -10,7 +10,7 @@ let userpage=Vue.component("userpage",{
                 <img v-bind:src="user.profilePic">
             </div>
 
-            <div class="userpage-upload-picture" v-if="ownPicture">
+            <div class="userpage-upload-picture" v-if="ownPage">
                 <pictureUpload @picture-uploaded-update="postAndUpdatePictures"></pictureUpload>
             </div>
             
@@ -28,7 +28,7 @@ let userpage=Vue.component("userpage",{
     `,
     data(){
         return{
-            ownPicture: true,
+            ownPage: this.user.userId==sessionStorage.userID,
             userImage: "../assets/defaultpicture.jpg",
             pictures: [],
         }
@@ -52,7 +52,7 @@ let userpage=Vue.component("userpage",{
         
     },
     mounted() {
-        console.log("getting pictures for user: "+this.user.userId);
+        console.log("ownPage: "+this.ownPage);
         axios.post("/getPicturesWithUserId",{
             userId: this.user.userId
         }).then((res)=>{

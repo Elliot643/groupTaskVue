@@ -3,7 +3,8 @@ let homepage=Vue.component("homepage",{
         <div class="homepage">
             
             <div class="welcomeThings">
-                <h1>Welcome To Hinder Homepage</h1>
+                <button align="right" v-on:click="logOut">Logout</button>
+                <h1>Welcome To Hinder Homepage {{ username }}</h1>
                 <img v-bind:src="'../assets/hinder.jpg'">
             </div>
             <div class="userCards"> 
@@ -21,11 +22,17 @@ let homepage=Vue.component("homepage",{
         
         return{
             users: [],
+            username: sessionStorage.username,
         }
     },
     methods:{
         createUserPage(user){
             this.$emit("create-userpage",user);
+        },
+        logOut(){
+            sessionStorage.removeItem("userID");
+            sessionStorage.removeItem("username");
+            this.$emit("user-logged-out");
         }
     },
     computed:{

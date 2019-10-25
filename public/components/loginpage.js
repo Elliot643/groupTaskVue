@@ -45,7 +45,8 @@ let loginpage=Vue.component("loginpage",{
                     >
                 </p>
             </form>
-
+            <button v-on:click="toggleSignup">Not a user? Sign up here.</button>
+            <signuppage v-if="showSignup" @user-signed-up="toggleSignup"/>
         </div>
     `,
     data(){
@@ -54,7 +55,8 @@ let loginpage=Vue.component("loginpage",{
             username: "",
             password: "",
             errors: [],
-            loggedIn: sessionStorage.getItem('loggedIn')
+            loggedIn: sessionStorage.getItem('loggedIn'),
+            showSignup: false
         }
     },
     methods:{
@@ -75,15 +77,18 @@ let loginpage=Vue.component("loginpage",{
                     password: e.target.password.value
                   })
                 .then(function (response) {
-                    sessionStorage.setItem('username', response.data.username)
-                    sessionStorage.setItem('userID', response.data._id)
-                    sessionStorage.setItem('loggedIn', true)
+                    sessionStorage.setItem('username', response.data.username);
+                    sessionStorage.setItem('userID', response.data.userId);
                 }).catch(function (error) {
                     console.log(error);
                 });
+                this.$emit("user-logged-in");
             }
 
             return true;
+        },
+        toggleSignup(){
+            this.showSignup=!this.showSignup;
         }
     },
     computed:{

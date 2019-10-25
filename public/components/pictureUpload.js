@@ -74,7 +74,7 @@ let pictureUpload=Vue.component("pictureUpload",{
                 let picture = {
                     picture: this.picture,
                     caption: this.caption,
-                    userId: 1
+                    userId: sessionStorage.userID
                 };
                 this.$emit("picture-uploaded-update", picture);
             }

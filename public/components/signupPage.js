@@ -38,7 +38,7 @@ let signuppage=Vue.component("signuppage",{
                 </p>
 
                 <p>
-                    <label for="profilePic">Link to profile Picture</label>
+                    <label for="profilePic">Link to a profile picture</label>
                     <input
                     id="profilePic"
                     v-model="profilePic"
@@ -47,7 +47,7 @@ let signuppage=Vue.component("signuppage",{
                     >
                 </p>
 
-                <div v-if="profilepic.length">
+                <div v-if="profilePic.length">
                     <h3>Choosen picture</h3>
                     <img v-bind:src="profilePic" style="width: 100px">  
                 </div>
@@ -91,6 +91,8 @@ let signuppage=Vue.component("signuppage",{
                     username: this.username,
                     password: this.password,
                     profilePic: this.profilePic,
+                }).then(()=>{
+                    this.$emit("user-signed-up");
                 });
             }
 

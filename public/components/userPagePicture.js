@@ -51,7 +51,7 @@ let userPagePicture=Vue.component("userpage-picture",{
         return{
             comment: "",
             thumbsUp: false,
-            commenter: "Commenter",
+            commenter: sessionStorage.username,
             comments: [],
         }
     },
