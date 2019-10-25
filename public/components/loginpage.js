@@ -54,7 +54,7 @@ let loginpage=Vue.component("loginpage",{
             username: "",
             password: "",
             errors: [],
-            loggedIn: false
+            loggedIn: sessionStorage.getItem('loggedIn')
         }
     },
     methods:{
@@ -77,8 +77,6 @@ let loginpage=Vue.component("loginpage",{
                 .then(function (response) {
                     sessionStorage.setItem('username', response.data.username)
                     sessionStorage.setItem('userID', response.data._id)
-                    sessionStorage.setItem('email', response.data.email)
-                    sessionStorage.setItem('role', response.data.role)
                     sessionStorage.setItem('loggedIn', true)
                 }).catch(function (error) {
                     console.log(error);
