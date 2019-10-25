@@ -23,6 +23,7 @@ let signupPage=Vue.component("signupPage",{
                     v-model="username"
                     type="text"
                     name="username"
+                    maxlength="30"
                     >
                 </p>
 
