@@ -10,7 +10,7 @@ let userpage=Vue.component("userpage",{
                 <img v-bind:src="user.profilePic">
             </div>
 
-            <div class="userpage-upload-picture">
+            <div class="userpage-upload-picture" v-if="ownPicture">
                 <pictureUpload @picture-uploaded-update="postAndUpdatePictures"></pictureUpload>
             </div>
             
@@ -28,6 +28,7 @@ let userpage=Vue.component("userpage",{
     `,
     data(){
         return{
+            ownPicture: true,
             userImage: "../assets/defaultpicture.jpg",
             pictures: [],
         }
