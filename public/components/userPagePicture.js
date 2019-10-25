@@ -12,7 +12,7 @@ let userPagePicture=Vue.component("userpage-picture",{
             <div style="width:300px; ">
                 <ul>
                     <h4 v-if="!comments.length" style="text-align: center;">No comments yet</h4>
-                    <div v-for="comment in comments" style="border-style: groove; margin-left: -35px; margin-right: 5px; height: auto">
+                    <div v-for="comment in comments" style="border-style: groove; margin-right: 5px; height: auto">
                         
                         <b>{{ comment.commenter }}:</b>
                         <img v-bind:src="'../assets/thumbsup.jpg'" v-if="comment.thumbsUp" align="right" style="width:20px;">
