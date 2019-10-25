@@ -11,14 +11,14 @@ let userpage=Vue.component("userpage",{
             </div>
 
             <div class="userpage-upload-picture" v-if="ownPage">
-                <pictureUpload @picture-uploaded-update="postAndUpdatePictures"></pictureUpload>
+                <pictureUpload @picture-uploaded-update="postAndUpdatePictures" @update-userpage-new-picture="updateKeyValue"></pictureUpload>
             </div>
             
-            <div class="userpage-pictures">
+            <div class="userpage-pictures" :key="keyvalue">
                 <h1 v-if="!pictures.length">This user does not have any pictures</h1>
                 <ul>
                     <p v-for="picture in pictures">
-                        <userpage-picture :picture="picture"/>
+                        <userpage-picture :picture="picture" @comment-added-update="updateKeyValue"/>
                     </p>
                 </ul>
             </div>
@@ -31,21 +31,25 @@ let userpage=Vue.component("userpage",{
             ownPage: this.user.userId==sessionStorage.userID,
             userImage: "../assets/defaultpicture.jpg",
             pictures: [],
+            keyvalue: 1,
         }
     },
     methods:{
         returnToHome(){
             this.$emit("return-to-homepage");
         },
-        postAndUpdatePictures(picture){
-            console.log("updating pictures on userpage");
+        postAndUpdatePictures(picture){ 
             axios.post("/postPicture", picture).then(()=> {
                 axios.post("/getPicturesWithUserId",{
                     userId: this.user.userId
                 }).then((res)=>{
                     this.pictures=res.data;
+                    console.log("updating pictures on userpage");
                 });
             });
+        },
+        updateKeyValue(){
+            this.keyvalue++;
         }
     },
     computed:{

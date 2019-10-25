@@ -77,6 +77,7 @@ let pictureUpload=Vue.component("pictureUpload",{
                     userId: sessionStorage.userID
                 };
                 this.$emit("picture-uploaded-update", picture);
+                this.$emit("update-userpage-new-picture");
             }
             this.picture="";
             this.caption="";

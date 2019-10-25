@@ -38,12 +38,14 @@ router.route("/login").post(function(req,res){
    User.findOne({username: username}, function(err , user){
        if(err){
            console.log('User does not exist')
+           res.send(false);
        }
        else{
            if(!user.validPassword(password)){
-               console.log("Wrong password")
+               console.log("Wrong password");
+               res.send(false);
            }else{
-               res.send(user)
+               res.send(user);
            }
        }
     });

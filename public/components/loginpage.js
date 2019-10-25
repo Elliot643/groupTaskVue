@@ -71,12 +71,13 @@ let loginpage=Vue.component("loginpage",{
             }
 
             if (!this.errors.length) {
-                axios
-                .post('/login', {
+                axios.post('/login', {
                     username: e.target.username.value,
                     password: e.target.password.value
-                  })
-                .then(function (response) {
+                }) .then((response) => {
+                    if(response===false){
+                        alert("Error when logging in. Wrong username or password.");
+                    }
                     sessionStorage.setItem('username', response.data.username);
                     sessionStorage.setItem('userID', response.data.userId);
                 }).catch(function (error) {

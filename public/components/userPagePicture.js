@@ -10,22 +10,24 @@ let userPagePicture=Vue.component("userpage-picture",{
                 <h3 v-if="picture.caption" style="text-align: center;">{{ picture.caption }}</h3>
             </div>
             <div style="width:300px; ">
-                <ul>
-                    <h4 v-if="!comments.length" style="text-align: center;">No comments yet</h4>
-                    <div v-for="comment in comments" style="border-style: groove; margin-right: 5px; height: auto">
-                        
-                        <b>{{ comment.commenter }}:</b>
-                        <img v-bind:src="'../assets/thumbsup.jpg'" v-if="comment.thumbsUp" align="right" style="width:20px;">
-                        <img v-bind:src="'../assets/thumbsdown.jpg'" v-if="!comment.thumbsUp" align="right" style="width:20px;">
-                        <br>
-                        <p style="word-break: break-all; white-space: normal;">
-                            {{ comment.comment }}
-                        </p>
-                        
-                        
-                          
-                    </div>
-                </ul>
+                <div>
+                    <ul>
+                        <h4 v-if="!comments.length" style="text-align: center;">No comments yet</h4>
+                        <div v-for="comment in comments" style="border-style: groove; margin-right: 5px; height: auto">
+                            
+                            <b>{{ comment.commenter }}:</b>
+                            <img v-bind:src="'../assets/thumbsup.jpg'" v-if="comment.thumbsUp" align="right" style="width:20px;">
+                            <img v-bind:src="'../assets/thumbsdown.jpg'" v-if="!comment.thumbsUp" align="right" style="width:20px;">
+                            <br>
+                            <p style="word-break: break-all; white-space: normal;">
+                                {{ comment.comment }}
+                            </p>
+                            
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
                 <div>
                     <form class="comment-form" @submit.prevent="addComment">
                         <p>
@@ -71,8 +73,9 @@ let userPagePicture=Vue.component("userpage-picture",{
                     pictureId: this.picture.pictureId
                 }).then((result)=>{
                     this.comments = result.data;
-                }
-            );
+                }).then(()=>{ 
+                    this.$emit("comment-added-update");
+                });
             }).catch(function (error) {
                 console.log(error);
             });
