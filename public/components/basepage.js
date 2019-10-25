@@ -1,7 +1,6 @@
 let basepage=Vue.component("basepage",{
     template:`
     <div class="basepage">
-
         <div class="homepage">
             <homepage @create-userpage="createUserpage" v-show="!hidden"/>
         </div>
@@ -14,7 +13,6 @@ let basepage=Vue.component("basepage",{
         <div class="userpage">
             <userpage @return-to-homepage="showHomepage" :user="currentUser" v-if="hidden"/>
         </div>
-
     </div>
         
     `,
