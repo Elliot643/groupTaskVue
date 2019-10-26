@@ -37,15 +37,19 @@ router.route("/login").post(function(req,res){
    let password = req.body.password
    User.findOne({username: username}, function(err , user){
        if(err){
-           console.log('User does not exist')
-           res.send(false);
+           console.log('User does not exist.')
+           res.send({inloggad: false});
        }
        else{
            if(!user.validPassword(password)){
-               console.log("Wrong password");
-               res.send(false);
+               console.log("Wrong password.");
+               res.send({inloggad: false});
            }else{
-               res.send(user);
+               res.send({
+                   inloggad: true,
+                   userId: user.userId
+               });
+               console.log(username+" logged in.");
            }
        }
     });

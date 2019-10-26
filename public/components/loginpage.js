@@ -75,15 +75,23 @@ let loginpage=Vue.component("loginpage",{
                     username: e.target.username.value,
                     password: e.target.password.value
                 }) .then((response) => {
-                    if(response===false){
-                        alert("Error when logging in. Wrong username or password.");
+                    if(response.data.inloggad===true){
+                        alert(this.username+" logged in");
+                        sessionStorage.setItem('username', this.username);
+                        sessionStorage.setItem('userID', response.data.userId);
+                        sessionStorage.setItem('loggedIn', 1);
+                        this.$emit("user-logged-in");
                     }
-                    sessionStorage.setItem('username', response.data.username);
-                    sessionStorage.setItem('userID', response.data.userId);
+                    else{
+                        alert("Error when logging in. Wrong username or password.");
+                        this.username="";
+                        this.password="";
+                    }
+                    
                 }).catch(function (error) {
                     console.log(error);
                 });
-                this.$emit("user-logged-in");
+                
             }
 
             return true;

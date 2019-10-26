@@ -33,6 +33,7 @@ let homepage=Vue.component("homepage",{
         logOut(){
             sessionStorage.removeItem("userID");
             sessionStorage.removeItem("username");
+            sessionStorage.setItem('loggedIn', 0);
             this.$emit("user-logged-out");
         }
     },

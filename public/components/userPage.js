@@ -18,7 +18,7 @@ let userpage=Vue.component("userpage",{
                 <h1 v-if="!pictures.length">This user does not have any pictures</h1>
                 <ul>
                     <p v-for="picture in pictures">
-                        <userpage-picture :picture="picture" @comment-added-update="updateKeyValue"/>
+                        <userpage-picture :picture="picture" @comment-added-rerender-card="updateKeyValue"/>
                     </p>
                 </ul>
             </div>
@@ -49,7 +49,9 @@ let userpage=Vue.component("userpage",{
             });
         },
         updateKeyValue(){
+            let scrollPos = window.pageYOffset;
             this.keyvalue++;
+            window.scrollTo(0,scrollPos);
         }
     },
     computed:{

@@ -2,12 +2,12 @@ let basepage=Vue.component("basepage",{
     template:`
     <div class="basepage" :key="keyVariable">
         <div v-if="!loggedIn">
-            <loginpage @user-logged-in="login"/>
+            <loginpage @user-logged-in="refreshPage"/>
         </div>
 
         <div v-if="loggedIn">
             <div class="homepage">
-                <homepage @create-userpage="createUserpage" @user-logged-out="logout" v-show="!hidden"/>
+                <homepage @create-userpage="createUserpage" @user-logged-out="refreshPage" v-show="!hidden"/>
             </div>
     
             <div class="userpage">
@@ -21,7 +21,7 @@ let basepage=Vue.component("basepage",{
     `,
     data(){
         return{
-            loggedIn: false,
+            
             hidden: false,
             keyVariable: 1,
             currentUser: {}
@@ -41,23 +41,21 @@ let basepage=Vue.component("basepage",{
             this.currentUser=user;
             this.showHomepage();
         },
-        logout(){
+        refreshPage(){
             this.keyVariable++;
-            this.loggedIn=false;
-            sessionStorage.setItem('loggedIn', false);
-            console.log("logout made. this.loggedIn: "+this.loggedIn+", sessionStorage: "+sessionStorage.loggedIn);
-        },
-        login(){
+            console.log("refreshPage called, loggedIn="+this.loggedIn);
+        }
+    },
+    computed:{
+        loggedIn(){
             this.keyVariable++;
-            this.loggedIn=true;
-            sessionStorage.setItem('loggedIn', true);
-            console.log("login made. this.loggedIn: "+this.loggedIn+", sessionStorage: "+sessionStorage.loggedIn);
+            return sessionStorage.getItem('loggedIn')==1; 
         }
     },
     mounted(){
         
-        //this.loggedIn=sessionStorage.loggedIn;
-        console.log("this.loggedIn: "+this.loggedIn+", sessionStorage: "+sessionStorage.loggedIn);
+        
+        console.log("loggedIn = "+this.loggedIn);
 
         
     }
