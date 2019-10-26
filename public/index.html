@@ -1,17 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>hinder</title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but hinder doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+<html>
+    <head>
+        <title>Hinder</title>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="./allStyle.css">
+    </head>
+    <body>
+        <div id="app">
+            <basepage/>    
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="./components/pictureUpload.js"></script>
+        <script src="./components/signupPage.js"></script>
+        <script src="./components/loginpage.js"></script>
+        <script src="./components/userPagePicture.js"></script>
+        <script src="./components/userCard.js"></script>
+        <script src="./components/userPage.js"></script>
+        <script src="./components/homepage.js"></script>
+        <script src="./components/basepage.js"></script>
+        <script src="main.js"></script>
+
+    </body>
 </html>

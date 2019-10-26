@@ -1,0 +1,52 @@
+* {
+    font-size: 25px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #fff;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+.basepage {
+    background-image: url("./assets/regret.jpg");
+    background-size: cover;
+    padding: 5%;
+}
+
+.basepage .homepage {
+    margin-left: 20%;
+}
+
+.basepage .loginpage {
+    margin-left: 20%;
+}
+
+.basepage .loginpage #username,
+.basepage .loginpage #password {
+    color: #000;
+}
+
+.basepage .userpage {
+    margin-left: 20%;
+}
+
+.basepage .userpage .userpage-upload-picture .pictureUpload #picture {
+    color: #000;
+}
+
+.basepage .userpage .userpage-upload-picture .pictureUpload #caption {
+    color: #000;
+}
+
+.basepage .userpage .userpage-picture .comment-form {
+    color: #000;
+}
+
+.homepage {
+    margin-bottom: 5%;
+}
