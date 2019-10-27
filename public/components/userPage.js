@@ -4,14 +4,14 @@ let userpage=Vue.component("userpage",{
     },
     template:`
         <div class="userpage" :key="userpagekey">
-            <button v-on:click="returnToHome" style="height: 45%;">Return</button>
-            <div class="userpage-profile-picture" style="display: grid; grid-template-columns: 15% 15%;">
-                <img v-bind:src="user.profilePic" style="height: 45%; border-style: double; border-radius: 5px; border-color: white">
+            <button v-on:click="returnToHome">Return</button>
+            <div class="userpage-profile-picture" style=" display: grid; grid-template-columns: 15% 15%;">
+                <img v-bind:src="user.profilePic" style="height: 80px; border-style: double; border-radius: 5px; border-color: white">
                 <h1><font color="white">{{ user.username }}'s page</font></h1> 
             </div>
 
             
-            <div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-gap: 5%; padding: 10px; grid-auto-rows: minmax(auto); margin-top: 5%;" :key="keyvalue">
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-gap: 5%; padding: 10px; grid-auto-rows: minmax(auto); margin-top: 10%;" :key="keyvalue">
                 <div class="userpage-upload-picture" v-if="ownPage">
                     <pictureUpload @picture-uploaded-update="postAndUpdatePictures" @update-userpage-new-picture="updateUserpage"></pictureUpload>
                 </div>
