@@ -16,8 +16,8 @@ let userpage=Vue.component("userpage",{
                     <pictureUpload @picture-uploaded-update="postAndUpdatePictures" @update-userpage-new-picture="updateUserpage"></pictureUpload>
                 </div>
 
-                <div>
-                    <h1 v-if="!pictures.length"><font color="white">This user does not have any pictures yet</font></h1>
+                <div v-if="!pictures.length">
+                    <h1><font color="white">This user does not have any pictures yet</font></h1>
                 </div>
                 
                 <div class="userpage-pictures" v-for="picture in pictures">
