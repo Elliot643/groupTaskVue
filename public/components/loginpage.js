@@ -3,8 +3,8 @@ let loginpage=Vue.component("loginpage",{
 
     },
     template:`
-        <div class="loginpage">
-            <h1>Login Page</h1>
+        <div class="loginpage" style="margin-top: 20%; margin-left: 40%">
+            <h1><font color="white">Login Page</font></h1>
 
             <form
                 id="app"
@@ -19,7 +19,7 @@ let loginpage=Vue.component("loginpage",{
                 </p>
 
                 <p>
-                    <label for="username">Username</label>
+                    <label for="username"><font color="white">Username</font></label>
                     <input
                     id="username"
                     v-model="username"
@@ -29,7 +29,7 @@ let loginpage=Vue.component("loginpage",{
                 </p>
 
                 <p>
-                    <label for="password">Password</label>
+                    <label for="password"><font color="white">Password</font></label>
                     <input
                     id="password"
                     v-model="password"
@@ -41,7 +41,7 @@ let loginpage=Vue.component("loginpage",{
                 <p>
                     <input
                     type="submit"
-                    value="Submit"
+                    value="Login"
                     >
                 </p>
             </form>

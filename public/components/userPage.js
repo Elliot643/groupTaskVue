@@ -3,26 +3,27 @@ let userpage=Vue.component("userpage",{
         user: Object,
     },
     template:`
-        <div class="userpage">
-            <button v-on:click="returnToHome">Return</button>
-            <h1>{{ user.username }}'s page</h1>
-            <div class="userpage-profile-picture">
-                <img v-bind:src="user.profilePic">
+        <div class="userpage" :key="userpagekey">
+            <button v-on:click="returnToHome" style="height: 45%;">Return</button>
+            <div class="userpage-profile-picture" style="display: grid; grid-template-columns: 15% 15%;">
+                <img v-bind:src="user.profilePic" style="height: 45%; border-style: double; border-radius: 5px; border-color: white">
+                <h1><font color="white">{{ user.username }}'s page</font></h1> 
             </div>
 
-            <div class="userpage-upload-picture" v-if="ownPage">
-                <pictureUpload @picture-uploaded-update="postAndUpdatePictures" @update-userpage-new-picture="updateKeyValue"></pictureUpload>
-            </div>
             
-            <div class="userpage-pictures" :key="keyvalue">
-                <h1 v-if="!pictures.length">This user does not have any pictures</h1>
-                <ul>
-                    <p v-for="picture in pictures">
-                        <userpage-picture :picture="picture" @comment-added-rerender-card="updateKeyValue"/>
-                    </p>
-                </ul>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-gap: 5%; padding: 10px; grid-auto-rows: minmax(auto); margin-top: 5%;" :key="keyvalue">
+                <div class="userpage-upload-picture" v-if="ownPage">
+                    <pictureUpload @picture-uploaded-update="postAndUpdatePictures" @update-userpage-new-picture="updateUserpage"></pictureUpload>
+                </div>
+
+                <div>
+                    <h1 v-if="!pictures.length"><font color="white">This user does not have any pictures yet</font></h1>
+                </div>
+                
+                <div class="userpage-pictures" v-for="picture in pictures">
+                    <userpage-picture :picture="picture" @comment-added-rerender-card="updateKeyValue" style="background-color: lightgrey;"/>
+                </div>
             </div>
-            
 
         </div>
     `,
@@ -32,6 +33,7 @@ let userpage=Vue.component("userpage",{
             userImage: "../assets/defaultpicture.jpg",
             pictures: [],
             keyvalue: 1,
+            userpagekey: 1
         }
     },
     methods:{
@@ -52,6 +54,11 @@ let userpage=Vue.component("userpage",{
             let scrollPos = window.pageYOffset;
             this.keyvalue++;
             window.scrollTo(0,scrollPos);
+        },
+        updateUserpage(){
+            let scrollPos = window.pageYOffset;
+            this.userpagekey++;
+            window.scrollTo(0,scrollPos); 
         }
     },
     computed:{

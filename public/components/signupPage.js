@@ -4,7 +4,7 @@ let signuppage=Vue.component("signuppage",{
     },
     template:`
         <div class="signuppage">
-            <h1>Signup Page</h1>
+            <h1><font color="white">Signup Page</font></h1>
 
             <form
                 id="app" @submit.prevent="checkForm" method="post">
@@ -17,7 +17,7 @@ let signuppage=Vue.component("signuppage",{
                 </p>
 
                 <p>
-                    <label for="username">Username</label>
+                    <label for="username"><font color="white">Username</font></label>
                     <input
                     id="username"
                     v-model="username"
@@ -28,7 +28,7 @@ let signuppage=Vue.component("signuppage",{
                 </p>
 
                 <p>
-                    <label for="password">Password</label>
+                    <label for="password"><font color="white">Password</font></label>
                     <input
                     id="password"
                     v-model="password"
@@ -38,7 +38,7 @@ let signuppage=Vue.component("signuppage",{
                 </p>
 
                 <p>
-                    <label for="profilePic">Link to a profile picture</label>
+                    <label for="profilePic"><font color="white">Link to a profile picture</font></label>
                     <input
                     id="profilePic"
                     v-model="profilePic"
@@ -48,7 +48,7 @@ let signuppage=Vue.component("signuppage",{
                 </p>
 
                 <div v-if="profilePic.length">
-                    <h3>Choosen picture</h3>
+                    <h3><font color="white">Choosen Picture</font></h3>
                     <img v-bind:src="profilePic" style="width: 100px">  
                 </div>
                 
@@ -56,7 +56,7 @@ let signuppage=Vue.component("signuppage",{
                 <p>
                     <input
                     type="submit"
-                    value="Submit"
+                    value="Register"
                     >
                 </p>
             </form>

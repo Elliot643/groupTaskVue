@@ -4,7 +4,7 @@ let pictureUpload=Vue.component("pictureUpload",{
     },
     template:`
         <div class="pictureUpload">
-            <h1>Upload picture</h1>
+            <h1><font color="white">Upload picture</font></h1>
 
             <form
                 id="app" @submit.prevent="checkForm" method="post">
@@ -17,7 +17,7 @@ let pictureUpload=Vue.component("pictureUpload",{
                 </p>
 
                 <p>
-                    <label for="picture">Picture</label>
+                    <label for="picture"><font color="white">Picture</font></label><br>
                     <input
                         id="picture"
                         v-model="picture"
@@ -27,7 +27,7 @@ let pictureUpload=Vue.component("pictureUpload",{
                 </p>
 
                 <p>
-                    <label for="password">Caption</label>
+                    <label for="caption"><font color="white">Caption</font></label><br>
                     <input
                         id="caption"
                         v-model="caption"

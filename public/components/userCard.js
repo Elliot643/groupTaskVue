@@ -3,12 +3,12 @@ let userCard=Vue.component("user-card",{
         user: Object,
     },
     template:`
-        <div class="user-card" @click="clickedCard">
+        <div class="user-card" @click="clickedCard" style="border-style: double; background-color: lightgrey; border-radius: 5px;">
             <div class="user-image">
-                <img v-bind:src="user.profilePic">
+                <img v-bind:src="user.profilePic" style="width: 100%">
             </div>
             <div>
-                <h1>{{ user.username }}</h1>
+                <h1 style="text-align: center;"><b>{{ user.username }}</b></h1>
             </div>
         </div>
     `,

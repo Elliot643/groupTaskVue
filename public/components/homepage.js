@@ -3,20 +3,17 @@ let homepage=Vue.component("homepage",{
         <div class="homepage">
             
             <div class="welcomeThings">
-                <button align="right" v-on:click="logOut">Logout</button>
-                <h1>Welcome To Hinder Homepage {{ username }}</h1>
-                <img v-bind:src="'../assets/hinder.jpg'">
-                <h3>Be a douche</h3>
-            </div>
-            <div class="userCards"> 
-                <h1>User Cards Here</h1>
-                <ul>
-                    <p v-for="user in users">
-                        <user-card :user="user" @clicked-usercard="createUserPage"></user-card>
-                    </p>
-                </ul>
+                <button  v-on:click="logOut">Logout</button>
+                <h1 style=" margin-top: 1%"><font color="white">Welcome {{ username }}</font></h1>
             </div>
             
+            <div style=" margin-top: 15%">
+                <div class="userCards" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 5%; padding: 10px; grid-auto-rows: minmax(auto);">
+                    <div v-for="user in users">  
+                        <user-card :user="user" @clicked-usercard="createUserPage"/>
+                    </div>   
+                </div>
+            </div>
         </div>
     `,
     data(){
